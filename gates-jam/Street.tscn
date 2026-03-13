@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://b3kifdfry2dsa"]
+
+[ext_resource type="Script" uid="uid://dp1gpv615m01j" path="res://PlayerController.gd" id="1_4f3h7"]
+[ext_resource type="Script" uid="uid://cupdsjnukbjqb" path="res://Interactable.gd" id="2_j6lt3"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j6lt3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_or81d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_or81d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_w684m"]
+
+[node name="Street" type="Node3D" unique_id=783028433]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=48472156]
+transform = Transform3D(0.1581581, -0.61871725, 0.76952904, 0, 0.77933794, 0.6266038, -0.9874138, -0.09910246, 0.123258606, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=2138868720]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1827573583]
+transform = Transform3D(2.2143278, 0, 0, 0, 0.329036, 0, 0, 0, 1, 0, 0, -24.685425)
+size = Vector3(1, 1, 80)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=700764335]
+transform = Transform3D(3.7400002, 0, 0, 0, 3.3000002, 0, 0, 0, 7.700001, -11.532227, 2, 4)
+use_collision = true
+size = Vector3(2.0644531, 1, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=2014042675]
+transform = Transform3D(3.7400002, 0, 0, 0, 3.3000002, 0, 0, 0, 7.700001, 11.467773, 2, -4)
+use_collision = true
+size = Vector3(2.0644531, 1, 1)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D" unique_id=87389047]
+transform = Transform3D(3.7400002, 0, 0, 0, 3.3000002, 0, 0, 0, 7.700001, 11.467773, 2, -28.740677)
+use_collision = true
+size = Vector3(2.0644531, 1, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=128405423]
+transform = Transform3D(3.7400002, 0, 0, 0, 3.3000002, 0, 0, 0, 7.700001, -11.532227, 2, -20)
+use_collision = true
+size = Vector3(2.0644531, 1, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=363068091]
+transform = Transform3D(3.7400002, 0, 0, 0, 3.3000002, 0, 0, 0, 7.700001, -11.532227, 2, -44.15892)
+use_collision = true
+size = Vector3(2.0644531, 1, 1)
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=633703074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+script = ExtResource("1_4f3h7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1327012367]
+shape = SubResource("CapsuleShape3D_j6lt3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1396390499]
+mesh = SubResource("CapsuleMesh_or81d")
+
+[node name="Pivot" type="Node3D" parent="Player" unique_id=1146156324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/Pivot" unique_id=1965955749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, -1.8000002, -0.5)
+
+[node name="RayCast3D" type="RayCast3D" parent="Player" unique_id=783933396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+target_position = Vector3(0, 0, -2)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1165416943]
+
+[node name="InteractBox" type="StaticBody3D" parent="." unique_id=177588359]
+transform = Transform3D(4.082, 0, 0, 0, 3.755, 0, 0, 0, 1.633, 0, 1.9899998, -9)
+script = ExtResource("2_j6lt3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractBox" unique_id=1555002436]
+shape = SubResource("BoxShape3D_or81d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InteractBox" unique_id=1669776124]
+mesh = SubResource("BoxMesh_w684m")
